@@ -24,9 +24,6 @@ export default {
                 return value==='left' || value==='right'
             }
         }
-    },
-    created () {
-        console.log(this.loading)
     }
 }
 </script>
@@ -46,7 +43,7 @@ export default {
     line-height: var(--button-height);
     padding: 0 1em;
     border-radius: var(--border-radius);
-    color: --color;
+    color: var(--color);
     border: 1px solid var(--border-color);
     &:hover{
         border-color: var(--border-color-hover);
