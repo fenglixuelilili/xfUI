@@ -30,12 +30,16 @@
 </style>
 <body>
     <div id='app'>
-        <el-button icon='icon-shezhi'>按钮</el-button>
-        <el-button >按钮</el-button>
-        <el-button position='left' icon='icon-shezhi'>按钮</el-button>
-        <el-button position='right' icon='icon-shezhi'>按钮</el-button>
+        <xf-button icon='icon-shezhi'>按钮</xf-button>
+        <xf-button :loading='loading' @click='loading=!loading'>按钮</xf-button>
+        <xf-button position='left'  :loading='loading2' @click='loading2=!loading2' icon='icon-shezhi'>按钮</xf-button>
+        <xf-button position='right' :loading='loading3' @click='loading3=!loading3' icon='icon-shezhi'>按钮</xf-button>
         <!-- 按钮组 -->
-        
+        <!-- <xf-group-button>
+            <xf-button >按钮</xf-button>
+            <xf-button >按钮</xf-button>
+            <xf-button position='right' >按钮</xf-button>
+        </xf-group-button> -->
     </div>
 </body>
 <script src='./src/app.js'></script>

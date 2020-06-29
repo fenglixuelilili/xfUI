@@ -1,7 +1,7 @@
 <template>
-    <button class="el-button">
-        <el-icon :icon='icon' v-if="icon" class="iconFont" :class="{[position]:true}"></el-icon>
-        <el-icon icon='icon-jiazaizhong' v-if="icon" class="iconFont loading" :class="{[position]:true}"></el-icon>
+    <button class="xf-button" @click="$emit('click')">
+        <xf-icon :icon='icon' v-if="icon&&!loading" class="iconFont" :class="{[position]:true}"></xf-icon>
+        <xf-icon icon='icon-jiazaizhong' v-if="loading" class="iconFont loading" :class="{[position]:true}"></xf-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -13,6 +13,10 @@ export default {
         icon:{
             type:String
         },
+        loading:{
+            type:Boolean,
+            default:false
+        },
         position:{
             type:String,
             default:'left',
@@ -20,6 +24,9 @@ export default {
                 return value==='left' || value==='right'
             }
         }
+    },
+    created () {
+        console.log(this.loading)
     }
 }
 </script>
@@ -28,7 +35,7 @@ export default {
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
 }
-.el-button{
+.xf-button{
     display: inline-flex;
     align-items: center;
     justify-content: center;

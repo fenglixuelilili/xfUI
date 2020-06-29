@@ -1,8 +1,15 @@
 import Vue from "vue"
-import elButton from "./el-button"
-import elIcon from "./el-icon"
-Vue.component('el-button',elButton)
-Vue.component('el-icon',elIcon)
+import xfButton from "./xf-button"
+import xfIcon from "./xf-icon"
+Vue.component('xf-button',xfButton)
+Vue.component('xf-icon',xfIcon)
 new Vue({
-    el:'#app'
+    el:'#app',
+    data(){
+        return {
+            loading:false,
+            loading2:false,
+            loading3:false,
+        }
+    }
 })
