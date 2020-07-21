@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https:////at.alicdn.com/t/font_835526_oznxxwyigkk.css">
+    <!-- <link rel="stylesheet" href="https:////at.alicdn.com/t/font_835526_oznxxwyigkk.css"> -->
 </head>
 <style>
     /* 公用样式 */
@@ -37,9 +37,24 @@
         <!-- 按钮组 -->
         <xf-group-button>
             <xf-button icon='icon-zuojiantou'>按钮1</xf-button>
-            
             <xf-button position='right' icon='icon-youjiantou2'>按钮3</xf-button>
         </xf-group-button>
+        <div>
+            input组件......:
+        </div>
+        <div>
+            <xf-input v-model='value'></xf-input>
+        </div>
+        <div>
+            <xf-input value='我是value' disabled></xf-input>
+        </div>
+        <div>
+            <xf-input value='我是value' readonly></xf-input>
+        </div>
+        <div>
+            <xf-input value='我是value' error='名字必须是两位'></xf-input>
+        </div>
+        {{value}}
     </div>
 </body>
 <script src='./src/app.js'></script>

@@ -3,6 +3,7 @@
     </i>
 </template>
 <script>
+import "./comment/icon.css"
 export default {
     props: ['icon']
 }
