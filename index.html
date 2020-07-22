@@ -27,6 +27,9 @@
     #app{
         padding: 10px;
     }
+    .p{
+        border: 1px solid red;
+    }
 </style>
 <body>
     <div id='app'>
@@ -55,6 +58,45 @@
             <xf-input value='我是value' error='名字必须是两位'></xf-input>
         </div>
         {{value}}
+        ---------------------------------------------------------------------------------------------------------------------------
+        <!--  -->
+        <div>
+            栅格布局
+        </div>
+        普通款：
+        <div class="p">
+            <xf-row>
+                <xf-col span='4'>4</xf-col>
+                <xf-col span='20'>20</xf-col>
+            </xf-row>
+            <xf-row>
+                <xf-col span='10'>4</xf-col>
+                <xf-col span='10'>20</xf-col>
+                <xf-col span='4'>20</xf-col>
+            </xf-row>
+        </div>
+        偏移款：
+        <div class="p">
+            <xf-row>
+                <xf-col span='4'>4</xf-col>
+                <xf-col span='18' offset='1'>20</xf-col>
+            </xf-row>
+        </div>
+        缝隙款：
+        <div class="p" >
+            <!-- gutter 代表是有10像素的间隙 -->
+            <xf-row gutter='100'>
+                <xf-col span='4'>4</xf-col>
+                <xf-col span='18' offset='2'>20</xf-col>
+            </xf-row>
+        </div>
+        <div class="p" >
+            <!-- gutter 代表是有10像素的间隙 -->
+            <xf-row gutter='0'>
+                <xf-col span='4'>4</xf-col>
+                <xf-col span='18' offset='2'>20</xf-col>
+            </xf-row>
+        </div>
     </div>
 </body>
 <script src='./src/app.js'></script>
