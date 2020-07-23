@@ -6,15 +6,24 @@
 <script>
 export default {
     props: {
-        span:{
-            type: String | Number
-        },
         offset:{
             type: String | Number
         },
-        // gutter:{
-        //      type: String | Number
-        // }
+        span:{
+            type: String | Number
+        },
+        sm:{
+            type:String|Number
+        },
+        md:{
+            type:String|Number
+        },
+        lg:{
+            type:String|Number
+        },
+        xl:{
+            type:String|Number
+        }
     },
     data () {
         return {
@@ -24,7 +33,14 @@ export default {
     // inject:['gutter'],
     computed: {
         varNum(){
-            return ['col-' + this.span,'marginLeft-' + this.offset]
+            return [this.span && 'col-' + this.span,
+                this.offset&&'marginLeft-' + this.offset,
+                
+                this.sm&&'col-sm-' + this.sm,
+                this.md&&'col-md-' + this.md,
+                this.lg&&'col-lg-' + this.lg,
+                this.xl&&'col-xl-' + this.xl
+            ]
         },
         Padding(){
             return {
@@ -53,5 +69,39 @@ export default {
                 margin-left: ($n/24) * 100%;
             }
         }
+        @media screen and (min-width:576px)  {
+            $classProfix:col-sm-;
+            @for $n from 1 through 24{
+                &.#{$classProfix}#{$n}{
+                    width: ($n/24) * 100%;
+                }
+            }
+        }
+        @media screen and (min-width:768px)  {
+            $classProfix:col-md-;
+            @for $n from 1 through 24{
+                &.#{$classProfix}#{$n}{
+                    width: ($n/24) * 100%;
+                }
+            }
+        }
+        @media screen and (min-width:992px)  {
+            $classProfix:col-lg-;
+            @for $n from 1 through 24{
+                &.#{$classProfix}#{$n}{
+                    width: ($n/24) * 100%;
+                }
+            }
+        }
+        @media screen and (min-width:1200px)  {
+            $classProfix:col-xl-;
+            @for $n from 1 through 24{
+                &.#{$classProfix}#{$n}{
+                    width: ($n/24) * 100%;
+                }
+            }
+        }
+
+       
     }
 </style>

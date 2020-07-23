@@ -9,6 +9,9 @@
 </head>
 <style>
     /* 公用样式 */
+    body{
+        overflow-x: hidden;
+    }
     *{
         padding: 0;
         margin: 0;
@@ -90,11 +93,37 @@
                 <xf-col span='18' offset='2'>20</xf-col>
             </xf-row>
         </div>
+        
         <div class="p" >
             <!-- gutter 代表是有10像素的间隙 -->
             <xf-row gutter='0'>
                 <xf-col span='4'>4</xf-col>
                 <xf-col span='18' offset='2'>20</xf-col>
+            </xf-row>
+        </div>
+        靠右居中：
+        <div class="p" >
+            <!-- gutter 代表是有10像素的间隙  align="end"-->
+            <!-- gutter='100' -->
+            <xf-row gutter='100'>
+                <xf-col span='24' sm='4' md='5' lg='6' xl='5' >
+                    <div class="color" style="background-color: greenyellow;height:50px;">
+                        1111
+                    </div>
+                </xf-col>
+                <xf-col span='24' sm='4' md='5' lg='6' xl='7' offset='6'>
+                    <div class="color" style="background-color: greenyellow;height:50px;">
+                        1111
+                    </div>
+                </xf-col>
+                <xf-col span='24' sm='4' md='5' lg='6' xl='7' offset='1'>
+                    <div class="color" style="background-color: greenyellow;height:50px;">
+                        1111
+                    </div>
+                </xf-col>
+
+
+                
             </xf-row>
         </div>
     </div>
