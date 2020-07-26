@@ -33,14 +33,32 @@
     .p{
         border: 1px solid red;
     }
+    .header,.footer{
+        height: 70px;
+        background-color: firebrick;
+    }
+    .content{
+        height: calc(100vh - 140px);
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: #eee;
+    }
+    .slider{
+        background-color: saddlebrown;
+        /* height: 100%; */
+        height: 100vh;
+        width: 150px;
+    }
 </style>
 <body>
-    <div id='app'>
+    <div id="app2">
+        <button @click='toast'>点击</button>
+    </div>
+    <div id='app' style="display: none;">
         <xf-button icon='icon-shezhi'>按钮</xf-button>
         <xf-button :loading='loading' @click='loading=!loading'>按钮</xf-button>
         <xf-button position='left'  :loading='loading2' @click='loading2=!loading2' icon='icon-shezhi'>按钮</xf-button>
         <xf-button position='right' :loading='loading3' @click='loading3=!loading3' icon='icon-shezhi'>按钮</xf-button>
-        <!-- 按钮组 -->
         <xf-group-button>
             <xf-button icon='icon-zuojiantou'>按钮1</xf-button>
             <xf-button position='right' icon='icon-youjiantou2'>按钮3</xf-button>
@@ -62,7 +80,6 @@
         </div>
         {{value}}
         ---------------------------------------------------------------------------------------------------------------------------
-        <!--  -->
         <div>
             栅格布局
         </div>
@@ -121,12 +138,78 @@
                         1111
                     </div>
                 </xf-col>
-
-
-                
             </xf-row>
         </div>
     </div>
+    <div id='app3'>
+        <!-- 布局组件 -->
+        <!-- <xf-layout>
+            <xf-header>
+                <div class="header">
+                    header
+                </div>
+            </xf-header>
+            <xf-content>
+                <div class="content">
+                    content
+                </div>
+            </xf-content>
+            <xf-footer>
+                <div class="footer">
+                    footer+
+                </div>
+            </xf-footer>
+        </xf-layout> -->
+        <!-- <xf-layout>
+            <xf-header>
+                <div class="header">
+                    header
+                </div>
+            </xf-header>
+            <xf-layout>
+                <xf-slider>
+                    <div class="slider">
+                        slider
+                    </div>
+                </xf-slider>
+                <xf-content>
+                    <div class="content">
+                        content
+                    </div>
+                </xf-content>
+            </xf-layout>
+            <xf-footer>
+                <div class="footer">
+                    footer
+                </div>
+            </xf-footer>
+        </xf-layout> -->
+        <xf-layout>
+            <xf-slider>
+                <div class="slider">
+                    slider
+                </div>
+            </xf-slider>
+            <xf-layout>
+                <xf-header>
+                    <div class="header">
+                        header
+                    </div>
+                </xf-header>
+                <xf-content>
+                    <div class="content">
+                        content
+                    </div>
+                </xf-content>
+                <xf-footer>
+                    <div class="footer">
+                        footer
+                    </div>
+                </xf-footer>
+            </xf-layout>
+        </xf-layout>
+    </div>
+    
 </body>
 <script src='./src/app.js'></script>
 </html>
