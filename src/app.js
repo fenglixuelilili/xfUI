@@ -37,16 +37,25 @@ new Vue({
         }
     },
     methods:{
-        toast(){
-            this.$Toast('我是提醒',{
-                autoClose:false,
-                closeButton:{
-                    text:'按钮',
-                    callback(){
-                        alert('呵呵呵')
+        toast(index){
+            if(index == 1){
+                this.$Toast('我是我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒提醒',{
+                    autoClose:100
+                })
+            }
+            if(index == 2){
+                this.$Toast('测试通过！',{
+                    position:'top',
+                    closeButton:{
+                        text:'确定'
                     }
-                }
-            })
+                })
+            }
+            if(index == 3){
+                this.$Toast('测试已经通过！',{
+                    position:'bottom'
+                })
+            }
         }
     },
     created(){

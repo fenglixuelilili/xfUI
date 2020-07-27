@@ -52,7 +52,9 @@
 </style>
 <body>
     <div id="app2">
-        <button @click='toast'>点击</button>
+        <button @click='toast(1)'>点击</button>
+        <button @click='toast(2)'>点击1</button>
+        <button @click='toast(3)'>点击2</button>
     </div>
     <div id='app' style="display: none;">
         <xf-button icon='icon-shezhi'>按钮</xf-button>
@@ -209,7 +211,6 @@
             </xf-layout>
         </xf-layout>
     </div>
-    
 </body>
 <script src='./src/app.js'></script>
 </html>
