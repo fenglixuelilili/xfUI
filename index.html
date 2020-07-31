@@ -51,11 +51,37 @@
     }
 </style>
 <body>
-    <div id="app2">
+    <div id='app2'>
+        <xf-tab :selected.sync='title' >
+            <xf-tab-head>
+                <xf-tab-item name='title1'>
+                    <xf-icon icon='icon-jishuwendang'></xf-icon>
+                    标题1
+                </xf-tab-item>
+                <xf-tab-item name='title2'>标题2</xf-tab-item>
+                <xf-tab-item name='title3'>标题3</xf-tab-item>
+                <template slot='slide'>
+                    <button>slider</button>
+                </template>
+            </xf-tab-head>
+            <xf-tab-body>
+                <xf-tab-pane name='title1'>
+                    内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1内容1
+                </xf-tab-pane>
+                <xf-tab-pane name='title2'>
+                    内容2 内容2 内容2 内容2 内容2 内容2 内容2 内容2 内容2 内容2 内容2 内容2
+                </xf-tab-pane>
+                <xf-tab-pane name='title3'>
+                    内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3内容3
+                </xf-tab-pane>
+            </xf-tab-body>
+        </xf-tab>
+    </div>
+    <!-- <div id="app2">
         <button @click='toast(1)'>点击</button>
         <button @click='toast(2)'>点击1</button>
         <button @click='toast(3)'>点击2</button>
-    </div>
+    </div> -->
     <div id='app' style="display: none;">
         <xf-button icon='icon-shezhi'>按钮</xf-button>
         <xf-button :loading='loading' @click='loading=!loading'>按钮</xf-button>

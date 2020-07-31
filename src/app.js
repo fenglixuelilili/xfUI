@@ -11,6 +11,13 @@ import xfFooter from "./xf-footer"
 import xfHeader from "./xf-header"
 import xfLayout from "./xf-layout"
 import xfSlider from "./xf-slider"
+
+import xfTab from "./tabs/xf-tab"
+import xfTabBody from "./tabs/xf-tab-body"
+import xfTabHead from "./tabs/xf-tab-head"
+import xfTabItem from "./tabs/xf-tab-item"
+import xfTabPane from "./tabs/xf-tab-pane"
+
 import Toast from "./plugin.js"
 Vue.use(Toast)
 
@@ -26,6 +33,14 @@ Vue.component('xf-footer',xfFooter)
 Vue.component('xf-header',xfHeader)
 Vue.component('xf-layout',xfLayout)
 Vue.component('xf-slider',xfSlider)
+
+Vue.component('xf-tab',xfTab)
+Vue.component('xf-tab-body',xfTabBody)
+Vue.component('xf-tab-head',xfTabHead)
+Vue.component('xf-tab-item',xfTabItem)
+Vue.component('xf-tab-pane',xfTabPane)
+
+
 new Vue({
     el:'#app2',
     data(){
@@ -33,7 +48,8 @@ new Vue({
             loading:false,
             loading2:false,
             loading3:false,
-            value:'我是value卡卡卡西'
+            value:'我是value卡卡卡西',
+            title:'title2'
         }
     },
     methods:{
