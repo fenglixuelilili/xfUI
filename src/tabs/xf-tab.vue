@@ -18,6 +18,9 @@ export default {
             valitore(value){
                 return ['horizontal','vertical'].indexOf(value)>=0
             }
+        },
+        activedcolor:{
+            type:String
         }
     },
     data () {
@@ -27,13 +30,13 @@ export default {
     },
     provide(){
         return {
-            eventBus:eventBus,
+            eventBus:eventBus
         }
     },
     mounted () {
         this.$nextTick(()=>{
-            console.log(this.selected)
             this.eventBus_.$emit('updata:selected',this.selected)
+            this.eventBus_.$emit('updata:activecolor',this.activedcolor)
         })
     }
 }
