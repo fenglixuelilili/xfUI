@@ -17,11 +17,12 @@ import xfTabBody from "./tabs/xf-tab-body"
 import xfTabHead from "./tabs/xf-tab-head"
 import xfTabItem from "./tabs/xf-tab-item"
 import xfTabPane from "./tabs/xf-tab-pane"
-
+import xfPopover from "./xf-popover"
 import Toast from "./plugin.js"
 Vue.use(Toast)
 
 Vue.component('xf-button',xfButton)
+Vue.component('xf-popover',xfPopover)
 Vue.component('xf-group-button',xfGroupButton)
 Vue.component('xf-icon',xfIcon)
 Vue.component('xf-input',xfInput)
@@ -39,7 +40,6 @@ Vue.component('xf-tab-body',xfTabBody)
 Vue.component('xf-tab-head',xfTabHead)
 Vue.component('xf-tab-item',xfTabItem)
 Vue.component('xf-tab-pane',xfTabPane)
-
 
 new Vue({
     el:'#app2',
