@@ -50,12 +50,24 @@
         width: 150px;
     }
     #app2{
-        padding: 50px;
+        padding: 200px;
     }
 </style>
 <body>
     <div id="app2">
-        <xf-popover event='click'>
+        <xf-popover event='click' position='right'>
+            <div slot="temcont">dsfasfdasfdsaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <xf-button>点击激活</xf-button>
+        </xf-popover>
+        <xf-popover event='click' position='left'>
+            <div slot="temcont">dsfasfdasfdsaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <xf-button>点击激活</xf-button>
+        </xf-popover>
+        <xf-popover event='click' position='bottom'>
+            <div slot="temcont">dsfasfdasfdsaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+            <xf-button>点击激活</xf-button>
+        </xf-popover>
+        <xf-popover event='click' position='top'>
             <div slot="temcont">dsfasfdasfdsaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
             <xf-button>点击激活</xf-button>
         </xf-popover>
@@ -77,7 +89,7 @@
         </xf-popover> -->
     </div>
     <div id='app'>
-        <xf-tab :selected.sync='title'  activedcolor='red'>
+        <xf-tab :selected.sync='title'  activedcolor='red' >
             <xf-tab-head>
                 <xf-tab-item name='title1'>
                     <xf-icon icon='icon-jishuwendang'></xf-icon>

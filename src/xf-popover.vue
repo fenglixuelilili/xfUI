@@ -1,7 +1,7 @@
 <template>
     <div class="xf-popover">
         <div class="temcont-wapper" ref='temcont-wapper' v-if="visiable">
-            <div class="temcont"  :style="{width:width+'px'}">
+            <div class="temcont"  :style="{width:width+'px'}" :class="['position-' + position]">
                 <slot name='temcont'></slot> 
             </div>
         </div>
@@ -48,19 +48,40 @@ export default {
         },
         moveEle(){
             this.$nextTick(()=>{
+                
                 if(!this.$refs['temcont-wapper']){return}
                 document.body.appendChild(this.$refs['temcont-wapper'])
                 const {top,left,width,height} = this.$refs['actived'].getBoundingClientRect()
-                let distance = (this.$refs['temcont-wapper'].scrollWidth - this.$refs['actived'].scrollWidth)/2
+                const distance = (this.$refs['temcont-wapper'].scrollWidth - this.$refs['actived'].scrollWidth)/2
+                const distanceH = (this.$refs['temcont-wapper'].scrollHeight - this.$refs['actived'].scrollHeight)/2
+                const {scrollHeight,scrollWidth} = this.$refs['temcont-wapper']
+                let absolute = {
+                    top:{
+                        left: window.scrollX + left - distance,
+                        top:window.scrollY + top - 5
+                    },
+                    left:{
+                        left: window.scrollX + left - scrollWidth - 5,
+                        top:  window.scrollY + top + height + distanceH
+                    },
+                    bottom:{
+                        left: window.scrollX + left - distance,
+                        top:window.scrollY + top + scrollHeight + height + 5
+                    },
+                    right:{
+                        left: window.scrollX + left + width + 5,
+                        top:window.scrollY + top + height + distanceH
+                    }
+                }
                 //  绝对定位是相对于整个页面（包括滚动的距离的相对位置）
-                this.$refs['temcont-wapper'].style.top = window.scrollY + top - 5 + 'px'
-                this.$refs['temcont-wapper'].style.left = window.scrollX + left - distance + 'px'
+                console.log(absolute[this.position].top)
+                this.$refs['temcont-wapper'].style.top = absolute[this.position].top + 'px'
+                this.$refs['temcont-wapper'].style.left = absolute[this.position].left + 'px'
+
                 this.$refs['temcont-wapper'].style.opacity = 1
             })
-            
         },
         openPopover(e){
-            
             clearInterval(this.timer)
             this.timer = setTimeout(() => {
                 this.visiable = true
@@ -130,20 +151,47 @@ export default {
            position: relative;
             word-wrap:break-word;
             &::after{
+              filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
               width: $width;
               height: $height;
               content: '';
               position: absolute;
+              background-color: #fff;
+              border-radius: 1px;
+              transform: rotateZ(45deg);
+           }
+
+           &.position-top::after{
               left: 0;
               right: 0;
               margin: 0 auto;
               top: calc(100% - 3.5px);
-              transform: rotateZ(45deg);
-              filter: drop-shadow(0 2px 12px rgba(0,0,0,.03));
               border-bottom: 1px solid   #ebeef5;
               border-right: 1px solid   #ebeef5;
-              background-color: #fff;
-              border-radius: 1px;
+           }
+           &.position-bottom::after{
+              left: 0;
+              right: 0;
+              margin: 0 auto;
+              top:-3.5px;
+              border-top: 1px solid   #ebeef5;
+              border-left: 1px solid   #ebeef5;
+           }
+           &.position-left::after{
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+              right: -4.5px;
+              border-top: 1px solid   #ebeef5;
+              border-right: 1px solid   #ebeef5;
+           }
+           &.position-right::after{
+              top: 0;
+              bottom: 0;
+              margin: auto 0;
+              left: -4.5px;
+              border-bottom: 1px solid   #ebeef5;
+              border-left: 1px solid   #ebeef5;
            }
         }
     }
