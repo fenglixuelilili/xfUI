@@ -18,6 +18,8 @@ import xfTabHead from "./tabs/xf-tab-head"
 import xfTabItem from "./tabs/xf-tab-item"
 import xfTabPane from "./tabs/xf-tab-pane"
 import xfPopover from "./xf-popover"
+import xfCollapse from "./xf-collapse"
+import xfCollapseItem from "./xf-collapse-item"
 import Toast from "./plugin.js"
 Vue.use(Toast)
 
@@ -41,6 +43,9 @@ Vue.component('xf-tab-head',xfTabHead)
 Vue.component('xf-tab-item',xfTabItem)
 Vue.component('xf-tab-pane',xfTabPane)
 
+Vue.component('xf-collapse',xfCollapse)
+Vue.component('xf-collapse-item',xfCollapseItem)
+
 new Vue({
     el:'#app2',
     data(){
@@ -49,10 +54,14 @@ new Vue({
             loading2:false,
             loading3:false,
             value:'我是value卡卡卡西',
-            title:'title2'
+            title:'title2',
+            activeNames:['1','4']
         }
     },
     methods:{
+        handleChange(val) {
+          console.log(val);
+        },
         toast(index){
             if(index == 1){
                 this.$Toast('我是我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒我是提醒提醒',{
