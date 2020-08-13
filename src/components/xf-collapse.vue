@@ -1,6 +1,6 @@
 <template>
     <div class="Collapse">
-        <slot ><slot>
+        <slot ></slot>
     </div>
 </template>
 <script>

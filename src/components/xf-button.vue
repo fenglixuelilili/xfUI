@@ -32,27 +32,38 @@ export default {
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
 }
+$--font-size:12px;
+$--button-height:30px;
+$color:#3eaf7c;
 .xf-button{
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: var(--font-size);
-    height: var(--button-height);
-    background-color: var(--button-bg);
-    line-height: var(--button-height);
+    font-size: $--font-size;
+    height: --button-height;
+    background-color: $color;
+    line-height: $--button-height;
+    color: #fff;
     padding: 0 1em;
-    border-radius: var(--border-radius);
-    color: var(--color);
-    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    // color: #0e0e0e;
+    border: 0 none;
     &:hover{
-        border-color: var(--border-color-hover);
+        border-color: $color;
+        background-color: red;
+        // color: #fff;
+        color: red;
     }
     &:active{
-        background-color: var(--button-active-bg);
+        // background-color: $color;
+        border-color: $color;
+        color: #fff;
+        color: red;
     }
     &:focus{
         outline: none;
+        
     }
     .left{
         margin-right: 0.5em;
@@ -64,6 +75,7 @@ export default {
     }
     .content{
         order: 1;
+        color: #fff;
     }
     >.loading{
         animation: spin 1s infinite linear;

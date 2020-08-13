@@ -1,7 +1,7 @@
 <template>
     <div class="mytoast" :class="'position-' + position">
         <div class="animate" >
-            <div class="slot"><slot><slot></div>
+            <div class="slot"><slot></slot></div>
             <div class="btnsure" ref='btnsure' v-if="closeButton" @click="btnCallback">{{getButtonText()}}</div>
         </div>
     </div>

@@ -9,7 +9,7 @@
             </div>
             <!-- 内容 -->
             <div class="content" v-if="visable">
-                <slot><slot>
+                <slot></slot>
             </div>
         </div>
     </div>
