@@ -5,7 +5,11 @@
             line及选择容器
         </div>
         <div style="margin: 20px 0;">
-            <xf-cascader :options='options'></xf-cascader>
+          <!-- {{selected}} -->
+            <xf-cascader 
+            :options='options' 
+            :selected.sync='selected' 
+            @change="ccc"></xf-cascader>
         </div>
         <div>
             手风琴组件
@@ -55,7 +59,7 @@
             <xf-button>点击激活</xf-button>
         </xf-popover>
     </div>
-    <div id='app'>
+    <div>
         <xf-tab :selected.sync='title'  activedcolor='red' >
             <xf-tab-head>
                 <xf-tab-item name='title1'>
@@ -86,7 +90,7 @@
         <button @click='toast(2)'>点击1</button>
         <button @click='toast(3)'>点击2</button>
     </div> -->
-    <div id='app' style="display: none;">
+    <div style="display: none;">
         <xf-button icon='icon-shezhi'>按钮</xf-button>
         <xf-button :loading='loading' @click='loading=!loading'>按钮</xf-button>
         <xf-button position='left'  :loading='loading2' @click='loading2=!loading2' icon='icon-shezhi'>按钮</xf-button>
@@ -454,12 +458,17 @@ export default {
                   value: 'jiaohu',
                   label: '组件交互文档'
                 }]
-            }]
+            }],
+            selected:[]
         }
    },
     methods:{
+      ccc(value){
+        console.log(value,'哈哈哈')
+      },
         handleChange(val) {
           console.log(val);
+          
         },
         toast(index){
             if(index == 1){

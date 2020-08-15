@@ -1,13 +1,20 @@
 <template>
     <div class="xf-cascader">
         <div class="left" :style="{minWidth:cwidth}" :class="{borderLeft:leval!=0}">
-            <div class="item" v-for="(item,i) in options" :key='i' @click="selected = item" >
-                <span>{{item.label}}</span>
-                <i class="iconfont icon-youjiantou2" v-if="item.children"></i>
+            <div class="item" v-for="(item,i) in options" :key='i' @click="_selected(item)" >
+                <span>{{item[props.label]}}</span>
+                <i class="iconfont icon-youjiantou2" v-if="item[props.children]"></i>
             </div>
         </div>
         <div class="right">
-            <xfCascaderItem :options='selectedRender' :leval='leval+1' v-if="selectedRender&&selectedRender.length"></xfCascaderItem>
+            <xfCascaderItem 
+            :props='props'
+            :selected='selected'
+            @updata:leval='updatalevaldata'
+            :options='selected[leval]&&selected[leval][props.children]?selected[leval][props.children]:[]'
+            :leval='leval+1' 
+            v-if="selected[leval]&&selected[leval][props.children]&&selected[leval][props.children].length"
+            ></xfCascaderItem>
         </div>
     </div>
 </template>
@@ -22,31 +29,46 @@ export default {
         leval:{
              type:Number,
              default:0
+        },
+        selected:{
+            type:Array,
+            require:true
+        },
+        props:{
+
         }
     },
-    data () {
-        return {
-            selected:null
+    methods: {
+      _selected(item){
+          let last = false
+          if(!(item[this.props.children]&&item[this.props.children].length)){
+            last = true
+          }
+          this.$emit('updata:leval',{
+              leval:this.leval,value:item,last
+          })
+      },
+      updatalevaldata({leval,value}){
+        let last = false
+        if(!(value[this.props.children]&&value[this.props.children].length)){
+            last = true
         }
+        this.$emit('updata:leval',{leval,value,last:last})
+      }
     },
     computed: {
-        selectedRender(){
-            if(this.selected &&　this.selected.children){
-                return this.selected.children
-            }
-        },
         cwidth(){
             let text = 0
             let reg = /([a-zA-Z]+)/g
             this.options.forEach(item=>{
-                let arr = reg.exec(item.label)
+                let arr = reg.exec(item[this.props.label])
                 let len = 0
                 if(arr){
                     arr.forEach(item=>{
                         len += item.length * 0.5
                     })
                 }
-                let result = item.label
+                let result = item[this.props.label]
                 result = result.replace(reg,'')
                 if((result.length*20*2 + len*10)>text){
                    text =  result.length*20*2 + len*10*1.5
