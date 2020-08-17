@@ -1,6 +1,6 @@
 <template>
-    <div class="xf-cascader">
-        <div class="trigger" @click="visable = !visable">
+    <div class="xf-cascader" v-cascader='close'>
+        <div class="trigger" @click="toggle">
             {{text?text:'点击选择'}}
              <div class="cascader" v-if="visable" @click.stop>
                 <xfCascaderItem 
@@ -63,6 +63,19 @@ export default {
             this.$emit('change',selected)
             // last 是不是最后一层 最后一层则关闭弹框
             this.visable = !last
+        },
+        close(){
+            this.visable = false
+        },
+        open(){
+            this.visable = true
+        },
+        toggle(){
+            if(visable){
+                this.close()
+            }else{
+                this.open()
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import "./components/directives"
 Vue.config.productionTip = false
 
 import xfButton from "@/components/xf-button"
