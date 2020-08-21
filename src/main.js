@@ -27,6 +27,10 @@ import xfCollapseItem from "@/components/xf-collapse-item"
 
 import xfCascader from "@/components/xf-cascader"
 import xfCascaderItem from "@/components/xf-cascader-item"
+
+import xfCarousel from "@/components/carousel/xf-carousel"
+import xfCarouselItem from "@/components/carousel/xf-carouselItem.vue"
+
 import Toast from "@/components/plugin.js"
 Vue.use(Toast)
 
@@ -54,6 +58,9 @@ Vue.component('xf-collapse',xfCollapse)
 Vue.component('xf-collapse-item',xfCollapseItem)
 Vue.component('xf-cascader',xfCascader)
 Vue.component('xf-cascader-item',xfCascaderItem)
+
+Vue.component('xf-carousel',xfCarousel)
+Vue.component('xf-carousel-item',xfCarouselItem)
 
 new Vue({
   render: h => h(App),

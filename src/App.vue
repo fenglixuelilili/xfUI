@@ -1,5 +1,28 @@
 <template>
   <div id="app">
+    <!--  -->
+    <div>轮播组件</div>
+    <div class="lunbo">
+      <!-- :current.sync='name' -->
+      <!-- :autoplay='true' -->
+      <xf-carousel :current.sync='name' :autoplay='true' >
+        <xf-carousel-item name='111'>
+          <div class="box">
+            <img src="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2534506313,1688529724&fm=26&gp=0.jpg" alt="">
+          </div>
+        </xf-carousel-item>
+        <xf-carousel-item name='222'>
+          <div class="box">
+            <img src="https://dss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1089874897,1268118658&fm=26&gp=0.jpg" alt="">
+          </div>
+        </xf-carousel-item>
+        <xf-carousel-item name='333'>
+          <div class="box">
+            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2310890073,3469009192&fm=26&gp=0.jpg" alt="">
+          </div>
+        </xf-carousel-item>
+      </xf-carousel>
+    </div>
    <div id="app2">
         <div class="lianjei">
             line及选择容器
@@ -252,6 +275,7 @@
 export default {
    data(){
         return {
+            name:'111',
             loading:false,
             loading2:false,
             loading3:false,
@@ -501,6 +525,20 @@ export default {
 
 <style lang="scss">
     /* 公用样式 */
+    .lunbo{
+      margin: 0 auto;
+      width: 80%;
+    }
+    .box{
+      width: 100%;
+      background-color: red;
+      color: #fff;
+      height: 300px;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
     body{
         overflow-x: hidden;
     }
