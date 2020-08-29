@@ -1,7 +1,27 @@
 <template>
   <div id="app">
-    <!--  -->
-    <div>轮播组件</div>
+    <!-- 导航组件 -->
+    <div>导航组件</div>
+    <div>
+    <!-- <xf-sub-menu index="2-4">
+      <template slot="title">选项4</template>
+      <xf-menu-item index="2-4-1">选项1</xf-menu-item>
+      <xf-menu-item index="2-4-2">选项2</xf-menu-item>
+      <xf-menu-item index="2-4-3">选项3</xf-menu-item>
+    </xf-sub-menu> -->
+    <xf-menu :default-active="activeIndex" class="xf-menu-demo" mode="horizontal" @select="handleSelect">
+      <xf-menu-item index="1">处理中心</xf-menu-item>
+      <xf-sub-menu index="2">
+        <template slot="title">我的工作台</template>
+        <xf-menu-item index="2-1">选项1选项1选项1选项1选项1选项1选项1选项1选项1</xf-menu-item>
+        <xf-menu-item index="2-2">选项2</xf-menu-item>
+        <xf-menu-item index="2-3">选项3</xf-menu-item>
+      </xf-sub-menu>
+      <xf-menu-item index="3" disabled>消息中心</xf-menu-item>
+      <xf-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></xf-menu-item>
+    </xf-menu>
+    </div>
+    <div style="height:500px;">轮播组件</div>
     <div class="lunbo">
       <!-- :current.sync='name' -->
       <!-- :autoplay='true' -->
@@ -483,10 +503,15 @@ export default {
                   label: '组件交互文档'
                 }]
             }],
-            selected:[]
+            selected:[],
+            activeIndex: '4',
+
         }
    },
     methods:{
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      },
       ccc(value){
         console.log(value,'哈哈哈')
       },

@@ -1,20 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
-import "./components/directives"
+import "@/Dirs/directives"
 Vue.config.productionTip = false
 
-import xfButton from "@/components/xf-button"
-import xfGroupButton from "@/components/xf-group-button"
+import xfButton from "@/components/button/xf-button"
+import xfGroupButton from "@/components/button/xf-group-button"
 import xfIcon from "@/components/xf-icon"
 import xfInput from "@/components/xf-input"
-import xfCol from "@/components/xf-col"
-import xfRow from "@/components/xf-row"
+import xfCol from "@/components/layout/xf-col"
+import xfRow from "@/components/layout/xf-row"
 
-import xfContent from "@/components/xf-content"
-import xfFooter from "@/components/xf-footer"
-import xfHeader from "@/components/xf-header"
-import xfLayout from "@/components/xf-layout"
-import xfSlider from "@/components/xf-slider"
+import xfContent from "@/components/layout/xf-content"
+import xfFooter from "@/components/layout/xf-footer"
+import xfHeader from "@/components/layout/xf-header"
+import xfLayout from "@/components/layout/xf-layout"
+import xfSlider from "@/components/layout/xf-slider"
 
 import xfTab from "@/components/tabs/xf-tab"
 import xfTabBody from "@/components/tabs/xf-tab-body"
@@ -22,16 +22,20 @@ import xfTabHead from "@/components/tabs/xf-tab-head"
 import xfTabItem from "@/components/tabs/xf-tab-item"
 import xfTabPane from "@/components/tabs/xf-tab-pane"
 import xfPopover from "@/components/xf-popover"
-import xfCollapse from "@/components/xf-collapse"
-import xfCollapseItem from "@/components/xf-collapse-item"
+import xfCollapse from "@/components/collapse/xf-collapse"
+import xfCollapseItem from "@/components/collapse/xf-collapse-item"
 
-import xfCascader from "@/components/xf-cascader"
-import xfCascaderItem from "@/components/xf-cascader-item"
+import xfCascader from "@/components/cascader/xf-cascader"
+import xfCascaderItem from "@/components/cascader/xf-cascader-item"
+
+import xfMenu from "@/components/navmenu/xf-menu.vue"
+import xfMenuItem from "@/components/navmenu/xf-menu-item.vue"
+import xfSubMenuItem from "@/components/navmenu/xf-submenu.vue"
 
 import xfCarousel from "@/components/carousel/xf-carousel"
 import xfCarouselItem from "@/components/carousel/xf-carouselItem.vue"
 
-import Toast from "@/components/plugin.js"
+import Toast from "@/plugins/plugin.js"
 Vue.use(Toast)
 
 Vue.component('xf-button',xfButton)
@@ -41,6 +45,10 @@ Vue.component('xf-icon',xfIcon)
 Vue.component('xf-input',xfInput)
 Vue.component('xf-col',xfCol)
 Vue.component('xf-row',xfRow)
+
+Vue.component('xf-menu',xfMenu)
+Vue.component('xf-menu-item',xfMenuItem)
+Vue.component('xf-sub-menu',xfSubMenuItem)
 
 Vue.component('xf-content',xfContent)
 Vue.component('xf-footer',xfFooter)

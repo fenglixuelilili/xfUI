@@ -14,4 +14,3 @@ export default {
         color: var(--color);
     }
 </style>
-

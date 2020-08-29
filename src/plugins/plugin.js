@@ -1,4 +1,4 @@
-import Toast from "./Toast.vue"
+import Toast from "@/components/Toast/Toast.vue"
 let singToast = null
 export default {
     install(Vue,options){
