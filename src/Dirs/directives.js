@@ -14,7 +14,6 @@ document.addEventListener('click',function(e){
 
 Vue.directive('cascader', {
   bind: function (el,binding,vnode) {
-      console.log(vnode,'vnode111')
     // 聚焦元素
     callback.push({
         el,
