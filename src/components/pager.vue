@@ -11,7 +11,6 @@
             <template v-if="item === '...'">....</template>
             <template v-else>{{item}}</template>
         </div>
-        
         <div class="next page" :class="{disable:current==total}" @click="change(current + 1)">
             <i class="iconfont icon-youjiantou2"></i>
         </div>
