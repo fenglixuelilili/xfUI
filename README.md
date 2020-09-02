@@ -15,3 +15,5 @@ loading属性为按钮添加loading
 ## xf-group-button 组件
 
 为按钮分组
+
+[按钮组件](src/components/button)
