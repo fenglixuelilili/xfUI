@@ -35,6 +35,8 @@ import xfSubMenuItem from "@/components/navmenu/xf-submenu.vue"
 import xfCarousel from "@/components/carousel/xf-carousel"
 import xfCarouselItem from "@/components/carousel/xf-carouselItem.vue"
 
+import pager from "@/components/pager.vue"
+
 import Toast from "@/plugins/plugin.js"
 Vue.use(Toast)
 
@@ -69,6 +71,8 @@ Vue.component('xf-cascader-item',xfCascaderItem)
 
 Vue.component('xf-carousel',xfCarousel)
 Vue.component('xf-carousel-item',xfCarouselItem)
+
+Vue.component('xf-pager',pager)
 
 new Vue({
   render: h => h(App),

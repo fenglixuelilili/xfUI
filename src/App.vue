@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+
+    <div>
+      分页组件
+    </div>
+    <div>
+      <xf-pager :page='page' :current='currentpage' :total='total' @pagechange="pagechange" @currentchange="currentchange"></xf-pager>
+    </div>
+    <div>-------------</div>
     <!-- 导航组件 -->
     <div>导航组件</div>
     <div>
@@ -513,10 +521,20 @@ export default {
             }],
             selected:[],
             activeIndex: '4',
+            total:26,
+            page:5,
+            currentpage:1,
 
         }
    },
     methods:{
+      pagechange(page){
+        this.page = page
+      },
+      currentchange(current){
+        // console.log(current)
+        this.currentpage = current
+      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       },
