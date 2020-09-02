@@ -42,7 +42,6 @@ export default {
     },
     computed: {
       text(){
-          console.log(this.props.label)
           return this.selected.map(item=>item[this.props.label]).join('/')
       }  
     },
@@ -71,7 +70,7 @@ export default {
             this.visable = true
         },
         toggle(){
-            if(visable){
+            if(this.visable){
                 this.close()
             }else{
                 this.open()
