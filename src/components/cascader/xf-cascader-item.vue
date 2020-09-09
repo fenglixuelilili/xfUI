@@ -8,12 +8,12 @@
         </div>
         <div class="right">
             <xfCascaderItem 
-            :props='props'
-            :selected='selected'
-            @updata:leval='updatalevaldata'
-            :options='selected[leval]&&selected[leval][props.children]?selected[leval][props.children]:[]'
-            :leval='leval+1' 
-            v-if="selected[leval]&&selected[leval][props.children]&&selected[leval][props.children].length"
+                :props='props'
+                :selected='selected'
+                @updata:leval='updatalevaldata'
+                :options='selected[leval]&&selected[leval][props.children]?selected[leval][props.children]:[]'
+                :leval='leval+1' 
+                v-if="selected[leval]&&selected[leval][props.children]&&selected[leval][props.children].length"
             ></xfCascaderItem>
         </div>
     </div>

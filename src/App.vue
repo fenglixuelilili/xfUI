@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-
+    <div>表格组件</div>
+    <div >
+      <xf-table :dataSource='tabledata' :colums='tablecolum' checkbox @changebox='changebox' height="300">
+        <template slot-scope="scope">
+          <button @click="edit(scope.row)">编辑</button>
+          <button>删除</button>
+        </template>
+      </xf-table>
+    </div>
     <div>
       分页组件
     </div>
@@ -524,10 +532,82 @@ export default {
             total:26,
             page:5,
             currentpage:1,
-
+            tabledata:[
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+              {id:1,name:'张三',age:10,sex:'男'},
+              {id:2,name:'张三1',age:10,sex:'男'},
+              {id:3,name:'张三2',age:10,sex:'男'},
+              {id:4,name:'张三3',age:10,sex:'男'},
+              {id:5,name:'张三4',age:10,sex:'男'},
+              {id:6,name:'张三5',age:10,sex:'男'},
+              {id:7,name:'张三6',age:10,sex:'男'},
+            ],
+            tablecolum:[
+              {
+                title: '姓名',
+                dataIndex: 'name',
+                key: 'name',
+                sort:false,
+                width:180
+              },
+              {
+                title: '年龄',
+                dataIndex: 'age',
+                key: 'age',
+                sort:true,
+                width:280
+              },
+              {
+                title: '性别',
+                dataIndex: 'sex',
+                key: 'sex',
+                sort:true,
+                width:280
+              },
+            ]
         }
    },
     methods:{
+      edit(obj){
+        console.log(obj,'编辑')
+      },
+      changebox(select){
+        console.log(select)
+      },
       pagechange(page){
         this.page = page
       },
