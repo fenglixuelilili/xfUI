@@ -2,12 +2,39 @@
   <div id="app">
     <div>表格组件</div>
     <div >
-      <xf-table :dataSource='tabledata' :colums='tablecolum' checkbox @changebox='changebox' height="300">
-        <template slot-scope="scope">
-          <button @click="edit(scope.row)">编辑</button>
-          <button>删除</button>
-        </template>
+      <xf-table :dataSource='tabledata' checkbox @changebox='changebox' height="300">
+         <xf-table-column
+          prop="name"
+          label="姓名"
+          width="180">
+        </xf-table-column>
+
+        <xf-table-column
+          prop="age"
+          label="年龄"
+          :sort='true'
+          width="180">
+        </xf-table-column>
+
+        <xf-table-column
+          prop="sex"
+          label="性别"
+          width="180">
+          <template slot-scope="scope">
+           <a href="#">{{scope.row.sex}}</a>
+          </template>
+        </xf-table-column>
+
+        <xf-table-column
+          label="操作"
+          width="180">
+          <template slot-scope="scope">
+           <button>删除</button>
+           <button>编辑</button>
+          </template>
+        </xf-table-column>
       </xf-table>
+      
     </div>
     <div>
       分页组件
@@ -314,7 +341,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
    data(){
@@ -612,7 +638,6 @@ export default {
         this.page = page
       },
       currentchange(current){
-        // console.log(current)
         this.currentpage = current
       },
       handleSelect(key, keyPath) {

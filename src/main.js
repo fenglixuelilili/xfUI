@@ -36,7 +36,8 @@ import xfCarousel from "@/components/carousel/xf-carousel"
 import xfCarouselItem from "@/components/carousel/xf-carouselItem.vue"
 
 import pager from "@/components/pager.vue"
-import xfTable from "@/components/table"
+import xfTable from "@/components/table/table.vue"
+import xfTableColumn from "@/components/table/table-colnm"
 
 import Toast from "@/plugins/plugin.js"
 Vue.use(Toast)
@@ -75,6 +76,7 @@ Vue.component('xf-carousel-item',xfCarouselItem)
 
 Vue.component('xf-pager',pager)
 Vue.component('xf-table',xfTable)
+Vue.component('xf-table-column',xfTableColumn)
 
 new Vue({
   render: h => h(App),

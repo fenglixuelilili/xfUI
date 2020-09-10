@@ -2,14 +2,13 @@
     <div class="table">
         <div class="tHead" :class="{border}" ref="tHead">
              <table class="mytable" >
-                 <table-colgroup :checkbox='checkbox' :colums='mycolums' :isScopedSlot='isScopedSlot'></table-colgroup>
+                 <table-colgroup :checkbox='checkbox' :colums='mycolums'></table-colgroup>
                  <thead>
                      <tr class="thead">
                         <th v-if="checkbox" class="checkbox">
                             <input type="checkbox" @click="selectAll($event)" :checked='selected.length == dataSource.length' ref='checkboxAll'>
                         </th>
-                        <th v-for="(item,index) in mycolums" :key='index' >
-                            <!-- :style="{width:item.width?item.width+'px':null}" -->
+                        <th v-for="(item,index) in mycolums" :key='index'>
                             <span class="title">
                                 {{item.title}}
                                 <template v-if="item.sort">
@@ -18,20 +17,23 @@
                                 </template>
                             </span>
                         </th>
-                        <th v-if="isScopedSlot">操作</th>
                     </tr>
                  </thead>
             </table>
         </div>
        <div class="tbody" :class="{border}" :style="table_height?`height:${table_height}px;overflow-y:scroll`:null" >
            <table class="mytable">
-                <table-colgroup :checkbox='checkbox' :colums='mycolums' :isScopedSlot='isScopedSlot'></table-colgroup>
+                <table-colgroup :checkbox='checkbox' :colums='mycolums'></table-colgroup>
                 <tbody>
                     <tr class="tcontent"  v-for="(item,index) in dataSource" :key='index'>
                         <td class="checkbox" v-if="checkbox"><input type="checkbox" @click="select($event,item)" :checked='selected.indexOf(item)>=0'></td>
-                        <td v-for="(col,index) in mycolums" :key='index' >{{item[col.dataIndex]}}</td>
-                        <td v-if="isScopedSlot">
-                            <slot ></slot>
+                        <td v-for="(col,index) in mycolums" :key='index' >
+                            <template v-if="!col.render">
+                                {{item[col.dataIndex]}}
+                            </template>
+                            <template v-else>
+                                <Vnodes :vnodes='col.render({row:item})'></Vnodes>
+                            </template>
                         </td>
                     </tr>
                 </tbody>
@@ -43,14 +45,14 @@
 import tableColgroup from "./tableColgroup"
 export default {
     components: {
-        tableColgroup  
+        tableColgroup,
+        Vnodes:{
+            functional:true,
+            render:(h,ctx) => ctx.props.vnodes
+        }
     },
     props: {
         dataSource:{
-            type:Array,
-            require:true
-        },
-        colums:{
             type:Array,
             require:true
         },
@@ -75,6 +77,32 @@ export default {
         }
     },
     methods: {
+        initmyColunm(){
+            Array.from(this.$slots.default).forEach(vnode=>{
+                const {label,prop,width,sort} = vnode.data.attrs
+                const render = vnode.data.scopedSlots?vnode.data.scopedSlots.default:null
+                let obj = {
+                    title: label,
+                    dataIndex: prop,
+                    key: prop,
+                    sort,
+                    width,
+                    render
+                }
+                this.mycolums.push(obj)
+            })
+            this.getHeaght()
+            if(!this.mycolums.find(item=>!item.width) ){
+                // 宽度都写了
+                this.mycolums = this.mycolums.map((item,index)=>{
+                    if(index == this.mycolums.length-1){
+                        delete item.width
+                    }
+                    return item
+                })
+            }
+            console.log(this.mycolums)
+        },
         getHeaght(){
             if(!this.height) return false
             this.$nextTick(()=>{
@@ -105,26 +133,8 @@ export default {
             this.$emit('changebox',this.selected)
         }
     },
-    computed: {
-        isScopedSlot(){
-            return this.$scopedSlots.default
-        }
-    },
     mounted () {
-        this.getHeaght()
-        if(!this.colums.find(item=>!item.width) ){
-            // 宽度都写了
-            this.mycolums = this.colums.map((item,index)=>{
-                if(index == this.colums.length-1 && !this.isScopedSlot){
-                    delete item.width
-                }
-                return item
-            })
-        }else{
-            // 有宽度没写
-            this.mycolums = this.colums
-
-        }
+        this.initmyColunm()
     },
     watch: {
         selected(val){
@@ -163,15 +173,11 @@ export default {
         }
     }
     .thead{
-        // background-color: rgba(0, 0, 0, 0.04);
         color:#909399;
         td,th{
-            // height: 80px;
-            // line-height: 80px;
             font-size: 17px;
             font-weight: 800;
             border-right: 1px solid fade-out(#eee,0.1);
-            // border-left: 1px solid fade-out(#eee,0.1);
             .title{
                 position: relative;
                 .up,.down{
@@ -209,9 +215,6 @@ export default {
                 }
             }  
         }
-        th:last-child{
-            // border-right:  0 none;
-        }
     }
     .tcontent:nth-child(2n){
         background-color: rgba(0,0,0,.03);
@@ -221,7 +224,6 @@ export default {
     }
 }
 .border{
-    //  border: 1px solid darken(#eee,10%);
      table{
         tr{
             td,th{
@@ -230,9 +232,6 @@ export default {
         }
      }
 }
-// .border:first-child{
-//     border-bottom: 0 none;
-// }
 .border:nth-child(2){
     border-bottom: 1px solid #eee;
     border-right: 1px solid #eee;
@@ -245,6 +244,5 @@ export default {
         }
     }
 }
-
 </style>
 
